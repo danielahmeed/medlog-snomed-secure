@@ -10,10 +10,7 @@ export const MedicalLogbook = () => {
   const [currentView, setCurrentView] = useState<View>("login");
   const [operations, setOperations] = useState<any[]>([]);
 
-  console.log("MedicalLogbook rendered - currentUser:", currentUser, "currentView:", currentView, "operations:", operations);
-
   const handleLogin = (userId: string) => {
-    console.log("handleLogin called with userId:", userId);
     setCurrentUser(userId);
     setCurrentView("dashboard");
   };
@@ -32,12 +29,7 @@ export const MedicalLogbook = () => {
   };
 
   const handleSaveOperation = (operation: any) => {
-    console.log("handleSaveOperation called with operation:", operation);
-    setOperations(prev => {
-      const newOperations = [...prev, operation];
-      console.log("Updated operations:", newOperations);
-      return newOperations;
-    });
+    setOperations(prev => [...prev, operation]);
     setCurrentView("dashboard");
   };
 
