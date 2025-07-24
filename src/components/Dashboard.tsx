@@ -29,10 +29,12 @@ interface Operation {
 interface DashboardProps {
   userId: string;
   onLogout: () => void;
+  onAddOperation: () => void;
+  operations: Operation[];
 }
 
-export const Dashboard = ({ userId, onLogout }: DashboardProps) => {
-  const [operations, setOperations] = useState<Operation[]>([]);
+export const Dashboard = ({ userId, onLogout, onAddOperation, operations }: DashboardProps) => {
+  
   const [searchTerm, setSearchTerm] = useState("");
   const [isRefreshing, setIsRefreshing] = useState(false);
 
@@ -44,8 +46,7 @@ export const Dashboard = ({ userId, onLogout }: DashboardProps) => {
   };
 
   const handleAddOperation = () => {
-    // Navigate to operation form
-    console.log("Navigate to add operation");
+    onAddOperation();
   };
 
   const filteredOperations = operations.filter(op =>
